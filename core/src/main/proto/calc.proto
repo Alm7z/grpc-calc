@@ -1,0 +1,20 @@
+syntax = "proto3";
+package org.example.calculator;
+
+option java_package = "org.example.calculator";
+option java_multiple_files = true;
+
+message SimpleValue {
+    double value = 1;
+}
+
+message SimpleIntValue {
+    int32 value = 1;
+}
+
+service Calculator {
+    rpc Sqrt (SimpleValue) returns (SimpleValue);
+    rpc StandardDeviation (stream SimpleValue) returns (SimpleValue);
+    rpc Factorize (SimpleIntValue) returns (stream SimpleIntValue);
+    rpc Max (stream SimpleValue) returns (stream SimpleValue);
+}
